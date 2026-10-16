@@ -1,0 +1,77 @@
+Algoritmo semana11
+	placa=""
+	propietario=""
+	tipo_vehiculo=0  // 1, 2 3, 4
+	cant_pasajeros = 0
+	valor_pasaje = 0 
+	cont_bus=0
+	dinero_recolectado = 0
+	placa_busetas = "" 
+    mayor_dinero_busetas = 0  
+    propietario_buseta= ""    
+    cont_colectivos= 0
+	dinero_colectivos= 0
+    cont_micro= 0
+	cont_pasajeros_micro=0
+	total_dinero_recolectado=0
+	N=0
+	i=0
+	// datos de entrada
+	Escribir "Cantidad de vehículos a procesar: "
+	leer N  //cantidad de vehículos
+	Para i <- 1 Hasta N Con Paso 1 Hacer
+		// datos de entrada
+		Escribir "--------- INFORMACIÓN VEHICULO " , i , " ---------"
+		Escribir "Placa vehículo: "
+		Leer placa
+		Escribir "Propietario del vehículo: "
+		Leer propietario
+		Escribir "Cantidad de pasajeros: "
+		Leer cant_pasajeros
+		Escribir "Valor del pasaje: "
+		Leer valor_pasaje
+		Escribir "tipo de vehículo (1=bus, 2=buseta, 3=colectivo, 4=microbus): "
+		Leer tipo_vehiculo
+		dinero_recolectado = cant_pasajeros * valor_pasaje
+		total_dinero_recolectado = total_dinero_recolectado + dinero_recolectado
+		//en caso de - switch
+		Segun tipo_vehiculo Hacer
+			1:  //BUS
+				Si (cant_pasajeros > 50) Entonces
+					cont_bus = cont_bus + 1  
+				Fin Si
+			2:  //BUSETA
+				Si (mayor_dinero_busetas < dinero_recolectado) Entonces
+					placa_busetas= placa 
+					mayor_dinero_busetas= dinero_recolectado  
+					propietario_buseta= propietario    
+				Fin Si
+			3: //COLECTIVOS
+				cont_colectivos= cont_colectivos + 1
+				dinero_colectivos= dinero_colectivos + dinero_recolectado
+			4: //MICROBUSES
+				cont_micro= cont_micro + 1
+				cont_pasajeros_micro= cont_pasajeros_micro + cant_pasajeros
+			De Otro Modo:
+				Escribir "Error en el tipo de vehículo......"
+		Fin Segun
+	Fin Para
+	//datos de salida
+	Escribir "Punto A ---"	
+	Escribir "Cuántos de los buses transportaron más de 50 pasajeros ", cont_bus
+	Escribir "  "
+	Escribir "Punto B ---"
+	Escribir "Placa de la buseta que más dinero recolectó y su valor"
+	Escribir "Placa: ", placa_busetas 
+	Escribir "Dinero recolectado de mayor valor: ", mayor_dinero_busetas  
+	Escribir "Propietario: " , propietario_buseta
+	Escribir "  "
+	Escribir "Punto C ---"
+	Escribir "Cuánto dinero recolectó los colectivos", dinero_colectivos, " cantidad de colectivos ", cont_colectivos
+	Escribir "   "
+	Escribir "Punto D ---"
+	Escribir "Promedio de pasajeros transportados por los microbuses: ", cont_pasajeros_micro/cont_micro, " pasajeros" 
+	Escribir "   "
+	Escribir "Punto E ---"
+	Escribir "Total dinero recolectado por la empresa ", total_dinero_recolectado,  "  y total de vehículos " , N
+FinAlgoritmo

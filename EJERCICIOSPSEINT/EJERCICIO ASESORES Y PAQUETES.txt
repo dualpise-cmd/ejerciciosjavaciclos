@@ -1,0 +1,73 @@
+Algoritmo ejercicioasesores
+		idasesor=0
+		nombrecliente= ""
+		tipopaquete=0 //1,2,3,4
+		cantiquetesvend=0
+		preciotiquete=0
+		cantasesorplaya=0 // + de 30 tiquetes
+		idasesorciudad=0 //  asesor de ciudad que vendio mas
+		mayorventaciudad=0
+		ventatotalmontana=0
+		cantasesoresmontana=0
+		promtiquetescruceros=0
+		dinerorecolectado=0
+		totaldinerorecolec=0
+		cantasesorescrucero=0
+		cantiquetescrucero=0
+		n=0
+		i=0
+			Escribir "Ingrese cantidad de asesores a procesar"
+			Leer n
+		Para i <-1 Hasta n Con Paso 1 Hacer
+			Escribir  "Ingrese la identificacion del asesor"
+			leer idasesor
+			escribir "ingrese nombre del cliente"
+			Leer nombrecliente
+			escribir "Tipo de paquete vendido: (1 = Playa, 2 = Ciudad, 3 = Montaña, 4 = Crucero)"
+			leer tipopaquete
+			Escribir "cantidad de tiquetes vendidos"
+			Leer cantiquetesvend
+			Escribir "Valor de cada tiquete"
+			Leer preciotiquete
+			dinerorecolectado= cantiquetesvend * preciotiquete
+			totaldinerorecolec= totaldinerorecolec + dinerorecolectado
+			Segun tipopaquete Hacer
+				1: // playa
+					Si cantiquetesvend >30 Entonces
+						cantasesorplaya= cantasesorplaya + 1
+					Fin Si
+				
+				2: // ciudad
+					Si mayorventaciudad < dinerorecolectado Entonces
+						idasesorciudad= idasesor
+						mayorventaciudad= dinerorecolectado
+					Fin Si
+					
+				3: // Montaña
+					ventatotalmontana = ventatotalmontana +  dinerorecolectado
+					cantasesoresmontana= cantasesoresmontana + 1
+				4: // Crucero
+					cantiquetescrucero = cantiquetescrucero + cantiquetesvend
+					cantasesorescrucero= cantasesorescrucero +1
+				De Otro Modo:
+					Escribir "Error en tipo de paquete"
+			Fin Segun
+		FinPara
+		
+			
+			
+		
+		// datos de salida
+		Escribir "A:Cuántos de los asesores que vendieron paquetes de Playa comercializaron más de 30 tiquetes. ", cantasesorplaya
+		Escribir "B:Identificación del asesor que vendió el paquete de Ciudad que más dinero recolectó: ",idasesorciudad
+		Escribir  "valor total de su venta asesor paquete ciudad: ",mayorventaciudad
+		escribir  "C: Cuánto dinero se recolectó en total por los paquetes de Montaña: ",ventatotalmontana
+		Escribir  "cantidad de asesores que vendieron este tipo de paquete Montaña: ", cantasesoresmontana
+		Si cantasesorescrucero > 0 Entonces
+			promtiquetescruceros = cantiquetescrucero / cantasesorescrucero
+			Escribir "D: Promedio de tiquetes vendidos en Cruceros: ", promtiquetescruceros
+		Sino
+			Escribir "D: Promedio de tiquetes vendidos en Cruceros: 0 (No hubo ventas)"
+		Fin Si
+		Escribir  " E: Total general de dinero recolectado por la agencia de viajes: ", totaldinerorecolec
+		Escribir  "total de asesores procesados: ", n

@@ -1,0 +1,102 @@
+Algoritmo cineexpres
+	precioEntrada=0
+	totalPagar=0
+	esEstudiante =""
+	promedio = 0 
+	descuentoAplicado=0
+    codigoCombo=0
+	precioBase = 35000
+	precioCombo = 0
+	descuentoAplicado = 0
+	porcentaje1 = 0.50
+	porcentaje2 = 0.20
+	i=0
+	n=0
+	// ingresar la cantidad de clientes para n 
+	
+	Escribir "ingrese la cantdad de clientes a procesar"
+	leer n
+	
+	Para i<-1 Hasta n Con Paso 1 Hacer
+		// Parte 1: Cálculo de la Entrada
+		Escribir "¿El cliente es estudiante? (SI/NO): "
+		Leer esEstudiante
+		
+		Si esEstudiante = "SI" o esEstudiante = "si" Entonces
+			Escribir "Ingrese el promedio académico: "
+			Leer promedio
+			cantestudiantes=cantestudiantes+1
+			
+			// Condicional Anidado
+			Si promedio >= 3.8 Entonces
+				descuentoAplicado = precioBase * porcentaje1
+			SiNo
+				descuentoAplicado = precioBase * porcentaje2
+			FinSi
+			
+			precioEntrada = precioBase - descuentoAplicado
+		SiNo
+			// Si escribe NO, no hay descuento
+			precioEntrada = precioBase
+			cantnoesestudiante= cantnoesestudiante+1
+		FinSi
+		
+		// Parte 2: Selección del Combo
+		Escribir "Seleccione el combo (1: Individual, 2: Pareja, 3: Infantil, Otro: Ninguno): "
+		Leer codigoCombo
+		
+		// CASO SWITCH O SEGUN
+		Segun codigoCombo Hacer
+			1:
+				precioCombo= 15000
+				totalvendidocombo1=totalvendidocombo1+precioCombo
+				cantcombo1=cantcombo1+1
+				
+			2:
+				precioCombo = 20000
+				totalvendidocombo2=totalvendidocombo2+precioCombo
+				cantcombo2=cantcombo2+1
+			3:
+				precioCombo= 25000
+				totalvendidocombo3=totalvendidocombo3+precioCombo
+				cantcombo3=cantcombo3+1
+			De Otro Modo:
+				precioCombo=0
+				cantcomboNO=cantcomboNO+1
+		Fin Segun
+		// proceso calculo total
+		totalPagar = precioEntrada + precioCombo
+		
+		Escribir "--- VALOR ENTRADA ---"
+		Escribir "Costo entrada sin descuento: $", precioBase
+		Escribir "Descuento aplicado: $", descuentoAplicado
+		Escribir "Costo total entrada: $", precioEntrada
+		Escribir "Costo del combo seleccionado: $", precioCombo
+		Escribir "Monto Total a Pagar: $", totalPagar
+		
+		//calculos totales
+		ventatotalentradassindcto= ventatotalentradassindcto + precioBase
+		descuentoacumulado= descuentoacumulado + descuentoAplicado
+		totalentradasacumulado= totalentradasacumulado+precioEntrada
+		ventatotalcombos=totalvendidocombo1+totalvendidocombo2+totalvendidocombo3
+		ventatotalacumulada=ventatotalcombos+ totalentradasacumulado
+		
+	Fin Para
+	// Salida de Datos
+	Escribir "--- VALOR ACUMULADO ---"
+	Escribir "venta total de las entradas sin descuento: $", ventatotalentradassindcto
+	Escribir "Descuento total en entradas aplicado: $", descuentoacumulado
+	Escribir "venta total de las entradas: $", totalentradasacumulado
+	Escribir "cantidad total combo 1: ", cantcombo1
+	Escribir "venta total combo 1: $", totalvendidocombo1
+	Escribir "cantidad total combo 2: ", cantcombo2
+	Escribir "venta total combo 2: $", totalvendidocombo2
+	Escribir "cantidad total combo 2: ", cantcombo3
+	Escribir "venta total combo 3: $", totalvendidocombo3
+	Escribir "cantidad no compraron combo: ", cantcomboNO
+	Escribir  "venta total combos :$", ventatotalcombos
+	Escribir "ventas totales acumuladas:$", ventatotalacumulada
+	Escribir "cantidad estudiantes:", cantestudiantes
+	Escribir "cantidad no estudiantes:", cantnoesestudiante
+	
+FinAlgoritmo
